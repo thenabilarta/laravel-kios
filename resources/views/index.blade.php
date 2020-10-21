@@ -47,7 +47,7 @@
         <p class="card-text">Rp {{ $dp->product_price }}</p>
       </div>
       <div class="card-body">
-        <a href="{{ $dp->id }}/edit" class="card-link mr-3">Edit</a>
+        <a href="{{ $dp->id }}/edit" class="btn btn-info">Edit</a>
         <form action="/products/{{ $dp->id }}" method="POST" class="d-inline">
           @method('delete')
           @csrf

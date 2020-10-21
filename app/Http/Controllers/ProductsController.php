@@ -136,12 +136,15 @@ class ProductsController extends Controller
             fwrite($handle, $string);
             fclose($handle);
 
-            Product::create([
-                'product_id' => $prod["id"],
-                'product_name' => $prod["title"],
-                'product_price' => $prod["price"],
-                'product_image' => $prod["image"],
-            ]);
+            $produk = Product::where('product_id', '=', $prod["id"])->first();
+                if ($produk === null) {
+                    Product::create([
+                        'product_id' => $prod["id"],
+                        'product_name' => $prod["title"],
+                        'product_price' => $prod["price"],
+                        'product_image' => $prod["image"],
+                    ]);
+                }
         }
 
         return redirect('/');
